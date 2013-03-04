@@ -1,7 +1,5 @@
 package dominion.agent;
 
-import dominion.agent.DominionEventListener;
-import dominion.agent.EventHub;
 import org.junit.Before;
 import org.junit.Test;
 

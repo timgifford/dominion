@@ -1,7 +1,7 @@
 package dominion.agent;
 
 public class EventHub {
-    private DominionEventListener eventListener;
+    private DominionEventListener eventListener = new DominionEventListener();
 
     private static EventHub instance = new EventHub();
     private StackTraceElement[] stackTrace;
@@ -13,7 +13,7 @@ public class EventHub {
     public void restrictedMethodCalled(String restrictedMethodName) {
         String calledFrom = getInvokingMethodFromStackTrace(restrictedMethodName);
 //        System.out.printf("[Restricted] %s called from %s\n", restrictedMethodName, calledFrom);
-        if(eventListener != null) {
+        if (eventListener != null) {
             eventListener.onRestrictedMethod(restrictedMethodName, calledFrom);
         }
     }
@@ -22,7 +22,7 @@ public class EventHub {
         StackTraceElement[] stackTraceElements = getStackTrace();
         for (int i = 0; i < stackTraceElements.length; i++) {
             String methodName = stackTraceElements[i].getMethodName();
-            if(methodName.equalsIgnoreCase(restrictedMethodName)){
+            if (methodName.equalsIgnoreCase(restrictedMethodName)) {
                 return stackTraceElements[++i].getMethodName();
             }
         }
@@ -34,12 +34,16 @@ public class EventHub {
     }
 
     public StackTraceElement[] getStackTrace() {
-        if(stackTrace == null )
+        if (stackTrace == null)
             return Thread.currentThread().getStackTrace();
         return stackTrace;
     }
 
     public void setStackTrace(StackTraceElement[] stackTrace) {
         this.stackTrace = stackTrace;
+    }
+
+    public DominionEventListener getEventListener() {
+        return eventListener;
     }
 }

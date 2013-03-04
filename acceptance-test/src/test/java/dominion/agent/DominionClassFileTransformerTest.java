@@ -1,6 +1,5 @@
 package dominion.agent;
 
-import dominion.junit.JUnitListener;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,14 +10,12 @@ public class DominionClassFileTransformerTest {
 
     @Test
     public void callsEventHubWhenJavaAgentIsSetAsJvmProperty() {
-        JUnitListener eventListener = new JUnitListener();
-
-        EventHub.getInstance().addListener(eventListener);
         PartialMock partialMock = mock(PartialMock.class);
 
         doCallRealMethod().when(partialMock).mockedMethod();
         partialMock.mockedMethod();
 
+        DominionEventListener eventListener = EventHub.getInstance().getEventListener();
         Assert.assertEquals("callsEventHubWhenJavaAgentIsSetAsJvmProperty", eventListener.getCallingMethod());
         Assert.assertEquals("doCallRealMethod", eventListener.getRestrictedMethod());
     }

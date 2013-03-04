@@ -81,8 +81,6 @@ public class DominionClassFileTransformer implements ClassFileTransformer {
     }
 
     private boolean isInstumentedMethod(String longMethodName) {
-        System.out.println("Profiled Long Name: " + longMethodName);
-
         return longMethodName.equalsIgnoreCase("org.mockito.Mockito.doCallRealMethod()")
                 || longMethodName.equalsIgnoreCase("org.mockito.Mockito.spy(java.lang.Object)");
     }
