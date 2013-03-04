@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dominion</artifactId>
+        <groupId>dominion</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dominion-agent</artifactId>
+<build>
+
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+
+                    <!--<manifestFile>-->
+                        <!--src/main/resources/META-INF/MANIFEST.MF-->
+                    <!--</manifestFile>-->
+                    <manifest>
+                        <!--<addClasspath>true</addClasspath>-->
+                        <mainClass>dominion.agent.Main</mainClass>
+                    </manifest>
+                    <manifestEntries>
+                        <Premain-Class>dominion.agent.Main</Premain-Class>
+                        <Agent-Class>dominion.agent.Main</Agent-Class>
+                        <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                        <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+        </plugin>
+
+    </plugins>
+</build>
+    <dependencies>
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.6.0.GA</version>
+        </dependency>
+    </dependencies>
+
+</project>
