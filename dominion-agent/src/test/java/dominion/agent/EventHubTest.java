@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class EventHubTest {
+public class EventHubTest extends DominionTest{
 
     private EventHub eventHub;
     private DominionEventListener listener;

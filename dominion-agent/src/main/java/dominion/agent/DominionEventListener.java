@@ -9,8 +9,6 @@ public class DominionEventListener {
         this.callingMethod = caller;
         this.restrictedMethod = restrictedMethodName;
         this.restrictedCalls++;
-//        System.out.println("Count: " + this.restrictedCalls);
-//        System.out.printf("onRestrictionMethod: %s Caller: %s\n", restrictedMethodName, caller);
     }
 
     public String getCallingMethod() {
